@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApartmentRental.Core.Entities
+namespace ApartmentRental.Infrastructure.Entities
 {
     internal class Image:BaseEntity
     {

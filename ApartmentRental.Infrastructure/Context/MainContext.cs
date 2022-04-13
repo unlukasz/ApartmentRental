@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using ApartmentRental.Infrastructure.Entities;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +10,15 @@ namespace ApartmentRental.Infrastructure.Context
 {
     internal class MainContext : DbContext
     {
-        public DbSet<Apartment> { get; set; }
-        public DbSet<Account> { get; set; }
-        public DbSet<Image> { get; set; }
-        public DbSet<Landlord> { get; set; }
-        public DbSet<Tenant> { get; set; }
-        public DbSet<Address> { get; set; }
-
-        public MainContext(DbContextOptions options) : base(options) { }
+        public DbSet<Apartment> Apartment { get; set; }
+        public DbSet<Account> Account { get; set; }
+        public DbSet<Image> Image { get; set; }
+        public DbSet<Landlord> Landlord { get; set; }
+        public DbSet<Tenant> Tenant { get; set; }
+        public DbSet<Address> Addresse { get; set; }
+        public MainContext(DbContextOptions options) : base(options)
+        {
+        }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlite("DataSource=dbo.ApartmentRental.db");
@@ -24,14 +26,14 @@ namespace ApartmentRental.Infrastructure.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Apartment>()
-                .HasMany(navigationExpression x: Apartment => x.Images)
-                .WithOne(navigationExtensions x: Image => x.Apartment)
+                .HasMany(x => x.Images)
+                .WithOne(x => x.Apartment)
                 .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Landlord>()
-                        .HasMany(navigationExpression x: Landlord => x.Apartments)
-                        .WithOne(navigationExtensions x: Apartment => x.Landlord)
-                        .OnDelete(DeleteBehavior.Cascade);
-}
+                .HasMany(x => x.Apartments)
+                .WithOne(x => x.Landlord)
+                .OnDelete(DeleteBehavior.Cascade);
+        }
     }
 }

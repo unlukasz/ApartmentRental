@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ApartmentRental.Core.Entities
+namespace ApartmentRental.Infrastructure.Entities
 {
-    internal class Landlord : BaseEntity
+    internal class Tenant:BaseEntity
     {
-        public List<Apartment> Apartments { get; set; }
+        public Apartment Apartment { get; set; }
 
         public int AccountId { get; set; }
         public Account Account { get; set; }
