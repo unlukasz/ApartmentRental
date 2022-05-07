@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApartmentRental.Infrastructure.Entities
 {
-    internal class Image:BaseEntity
+    public class Image:BaseEntity
     {
         public byte[] Data { get; set; }
 

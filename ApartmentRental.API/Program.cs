@@ -1,7 +1,16 @@
+using Microsoft.EntityFrameworkCore;
+using ApartmentRental.Infrastructure.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+builder.Services.AddDbContext<MainContext>(options =>
+    options.UseSqlite("DataSource=dbo.ApartmentRental.db",
+        sqlOptions => sqlOptions.MigrationsAssembly("ApartmentRental.Infrastructure")
+    )
+);
 
 var app = builder.Build();
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ApartmentRental.Infrastructure.Context
 {
-    internal class MainContext : DbContext
+    public class MainContext : DbContext
     {
         public DbSet<Apartment> Apartment { get; set; }
         public DbSet<Account> Account { get; set; }
@@ -16,6 +16,9 @@ namespace ApartmentRental.Infrastructure.Context
         public DbSet<LandLord> LandLord { get; set; }
         public DbSet<Tenant> Tenant { get; set; }
         public DbSet<Address> Address { get; set; }
+        public MainContext()
+        {
+        }
         public MainContext(DbContextOptions options) : base(options)
         {
         }
@@ -32,7 +35,7 @@ namespace ApartmentRental.Infrastructure.Context
 
             modelBuilder.Entity<LandLord>()
                 .HasMany(x => x.Apartments)
-                .WithOne(x => x.Landlord)
+                .WithOne(x => x.LandLord)
                 .OnDelete(DeleteBehavior.Cascade);
         }
     }

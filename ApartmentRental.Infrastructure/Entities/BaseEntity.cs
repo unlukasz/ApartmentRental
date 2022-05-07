@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ApartmentRental.Infrastructure.Entities
 {
-    internal class BaseEntity
+    public class BaseEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

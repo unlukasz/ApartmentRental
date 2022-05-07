@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ApartmentRental.Infrastructure.Entities
 {
-    internal class Tenant:BaseEntity
+    public class Tenant:BaseEntity
     {
         public Apartment Apartment { get; set; }
 
