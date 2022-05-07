@@ -80,7 +80,7 @@ namespace ApartmentRental.Infrastructure.Repository
             apartmentToUpdate.RentAmount = entity.RentAmount;
             apartmentToUpdate.SquareMeters = entity.SquareMeters;
             apartmentToUpdate.NumberOfRooms = entity.NumberOfRooms;
-            apartmentToUpdate.DateOfUpdates = entity.DateOfUpdates;
+            apartmentToUpdate.DateOfUpdates = DateTime.UtcNow;
 
             await _mainContext.SaveChangesAsync();
         }

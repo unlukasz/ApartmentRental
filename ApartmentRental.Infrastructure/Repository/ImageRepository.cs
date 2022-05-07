@@ -69,7 +69,7 @@ namespace ApartmentRental.Infrastructure.Repository
             }
 
             imageToUpdate.Apartment = entity.Apartment;
-            imageToUpdate.DateOfUpdates = entity.DateOfUpdates;
+            imageToUpdate.DateOfUpdates = DateTime.UtcNow;
 
             await _mainContext.SaveChangesAsync();
         }

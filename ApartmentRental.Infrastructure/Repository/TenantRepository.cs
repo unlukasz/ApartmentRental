@@ -69,7 +69,7 @@ namespace ApartmentRental.Infrastructure.Repository
             }
 
             tenantToUpdate.Account = entity.Account;
-            tenantToUpdate.DateOfUpdates = entity.DateOfUpdates;
+            tenantToUpdate.DateOfUpdates = DateTime.UtcNow;
 
             await _mainContext.SaveChangesAsync();
         }
