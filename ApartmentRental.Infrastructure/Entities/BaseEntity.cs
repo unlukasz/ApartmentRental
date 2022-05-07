@@ -13,7 +13,7 @@ namespace ApartmentRental.Infrastructure.Entities
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
-        public DateTime DateofCreation { get; set; }
-        public DateTime DateofUpdates { get; set; }
+        public DateTime DateOfCreation { get; set; }
+        public DateTime DateOfUpdates { get; set; }
     }
 }

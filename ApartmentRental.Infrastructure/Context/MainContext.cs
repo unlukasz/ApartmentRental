@@ -13,9 +13,9 @@ namespace ApartmentRental.Infrastructure.Context
         public DbSet<Apartment> Apartment { get; set; }
         public DbSet<Account> Account { get; set; }
         public DbSet<Image> Image { get; set; }
-        public DbSet<Landlord> Landlord { get; set; }
+        public DbSet<LandLord> LandLord { get; set; }
         public DbSet<Tenant> Tenant { get; set; }
-        public DbSet<Address> Addresse { get; set; }
+        public DbSet<Address> Address { get; set; }
         public MainContext(DbContextOptions options) : base(options)
         {
         }
@@ -30,7 +30,7 @@ namespace ApartmentRental.Infrastructure.Context
                 .WithOne(x => x.Apartment)
                 .OnDelete(DeleteBehavior.Cascade);
 
-            modelBuilder.Entity<Landlord>()
+            modelBuilder.Entity<LandLord>()
                 .HasMany(x => x.Apartments)
                 .WithOne(x => x.Landlord)
                 .OnDelete(DeleteBehavior.Cascade);
