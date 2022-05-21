@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ApartmentRental.Infrastructure.Repository
 {
-    internal interface IImageRepository : IRepository<Image>
+    public interface IImageRepository : IRepository<Image>
     {
     }
 }

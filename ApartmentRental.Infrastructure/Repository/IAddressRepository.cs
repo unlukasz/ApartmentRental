@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace ApartmentRental.Infrastructure.Repository
 {
-    internal interface IAddressRepository : IRepository<Address>
+    public interface IAddressRepository : IRepository<Address>
     {
+        Task<int> GetAddressIdByItsAttributesAsync(string country, string city, string zipCode,
+            string street, string buildingNumber, string apartmentNumber);
+        Task<Address> CreateAndGetAsync(Address address);
     }
 }

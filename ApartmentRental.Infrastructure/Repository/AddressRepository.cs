@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ApartmentRental.Infrastructure.Repository
 {
-    internal class AddressRepository : IAddressRepository
+    public class AddressRepository : IAddressRepository
     {
         private readonly MainContext _mainContext;
 
@@ -24,7 +24,6 @@ namespace ApartmentRental.Infrastructure.Repository
             await _mainContext.AddAsync(entity);
             await _mainContext.SaveChangesAsync();
         }
-
         public async Task DeleteById(int id)
         {
             var addressToDelete = await _mainContext.Address.SingleOrDefaultAsync(x => x.Id == id);
@@ -76,6 +75,25 @@ namespace ApartmentRental.Infrastructure.Repository
             addressToUpdate.Country = entity.Country;
 
             await _mainContext.SaveChangesAsync();
+        }
+
+        public async Task<int> GetAddressIdByItsAttributesAsync(string country, string city, string zipCode, string street, string buildingNumber, string apartmentNumber)
+        {
+            var adress = await _mainContext.Address.FirstOrDefaultAsync(x =>
+            x.Country == country && x.City == city && x.ZipCode == zipCode && x.Street == street &&
+            x.BuildingNumber == buildingNumber && x.ApartmentNumber == apartmentNumber);
+
+            return adress?.Id ?? 0;
+        }
+
+        public async Task<Address> CreateAndGetAsync(Address address)
+        {
+            address.DateOfCreation = DateTime.UtcNow;
+            address.DateOfUpdates = DateTime.UtcNow;
+            await _mainContext.AddAsync(address);
+            await _mainContext.SaveChangesAsync();
+
+            return address;
         }
     }
 }

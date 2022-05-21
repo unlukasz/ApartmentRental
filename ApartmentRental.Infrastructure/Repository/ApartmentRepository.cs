@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ApartmentRental.Infrastructure.Repository
 {
-    internal class ApartmentRepository : IApartmentRepository
+    public class ApartmentRepository : IApartmentRepository
     {
         private readonly MainContext _mainContext;
 

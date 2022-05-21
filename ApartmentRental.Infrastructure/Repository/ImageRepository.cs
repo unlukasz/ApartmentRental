@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ApartmentRental.Infrastructure.Repository
 {
-    internal class ImageRepository : IImageRepository
+    public class ImageRepository : IImageRepository
     {
         private readonly MainContext _mainContext;
 
